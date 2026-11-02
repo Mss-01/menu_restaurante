@@ -1,6 +1,5 @@
-// Datos del menú. Para añadir un plato, agrega un objeto a "items" de su sección.
+// Datos del menú. GENERADO desde menu.xlsx — edita el Excel, no este archivo.
 // "image" es el nombre del archivo (sin extensión) dentro de images/web/<carpeta>/.
-// Precios y descripciones son de ejemplo, pendientes de reemplazar.
 const MENU = [
   {
     id: "platos",
@@ -8,9 +7,11 @@ const MENU = [
     folder: "Platos",
     fit: "cover",
     items: [
-      { name: "Mofongo clásico", image: "mofongo_clasico", price: 450, description: "Plátano verde majado con ajo y chicharrón, servido con caldo de la casa." },
-      { name: "Mofongo de pollo con crema", image: "mofongo_pollo_crema", price: 550, description: "Mofongo coronado con trozos de pollo salteado en suave salsa de crema." },
-      { name: "Pollo tradicional", image: "pollo_tradicional", price: 420, description: "Pollo guisado criollo con sazón casera, acompañado de arroz y ensalada." },
+      { name: "Mofongo Tradicional", image: "mofongo_clasico", price: 350, description: "Nuestro delicioso mofongo de plátano verde, frito y majado al momento con ajo y crujiente chicharrón de cerdo. Suave, jugoso y lleno de sabor criollo, acompañado de su caldito para disfrutar hasta el último bocado." },
+      { name: "Mofongo de Pollo a la Crema", image: "mofongo_pollo_crema", price: 450, description: "Nuestro mofongo de plátano verde, frito y majado al momento, acompañado de tiernos trozos de pollo bañados en una deliciosa salsa cremosa, suave y llena de sabor. Una combinación irresistible que une lo mejor de nuestra cocina criolla con un toque de cremosidad.\n\n¡Una experiencia para los amantes del buen comer!" },
+      { name: "Mofongo Mixto", image: "mofongo_mixto", price: 550, description: "¡Para los que no se conforman con una sola carne! Nuestro delicioso mofongo de plátano verde, frito y majado al momento, acompañado de una irresistible combinación de longaniza, cerdo y chorizo. Tres sabores intensos que se unen para crear una experiencia cargada de sabor, textura y tradición.\n\n¡Un mofongo para los verdaderos amantes de la carne!" },
+      { name: "Mofongo Doña Niña", image: "mofongo_dona_nina", price: 650, description: "¡El sabor de la casa en su máxima expresión!\n\nNuestro delicioso mofongo de plátano verde, frito y majado al momento, coronado con una irresistible combinación de pollo a la crema, jugosas carnitas de cerdo, chorizo y longaniza. Una explosión de sabores criollos, donde la suavidad de nuestra salsa cremosa se une al intenso sabor de las carnes para crear una experiencia única. ¡una experiencia que no se olvida!" },
+      { name: "Pollo tradicional", image: "pollo_tradicional", price: 420, description: "Pollo frito criollo con sazón casero, acompañado de arroz y ensalada." },
       { name: "Pollo crispy", image: "pollo_crispy", price: 400, description: "Piezas de pollo empanizadas y doradas, crujientes por fuera y jugosas por dentro." },
       { name: "Hamburguesa de res", image: "hamburguesa_res", price: 380, description: "Carne de res a la parrilla con vegetales frescos y queso, en pan artesanal." },
       { name: "Hamburguesa de pollo", image: "hamburguesa_pollo", price: 350, description: "Pechuga de pollo crujiente con lechuga, tomate y salsa de la casa." },
