@@ -27,7 +27,7 @@ button { font: inherit; color: inherit; }
 
 /* Encabezado */
 .hero {
-  background: var(--green-dark);
+  background: var(--white);
   text-align: center;
   padding: 28px 20px 22px;
   border-bottom: 4px solid var(--yellow);
@@ -38,7 +38,7 @@ button { font: inherit; color: inherit; }
   font-family: var(--font-title);
   font-size: 1.05rem;
   letter-spacing: .06em;
-  color: var(--yellow);
+  color: var(--green);
 }
 
 /* Pestañas */
@@ -166,8 +166,8 @@ button { font: inherit; color: inherit; }
 }
 
 /* Pie */
-.footer { padding: 24px 16px 36px; text-align: center; background: var(--green-dark); }
-.footer img { width: 170px; height: auto; margin: 0 auto; opacity: .9; }
+.footer { padding: 24px 16px 36px; text-align: center; background: var(--white); border-top: 4px solid var(--yellow); }
+.footer img { width: 170px; height: auto; margin: 0 auto; }
 
 @media (max-width: 480px) {
   .grid { grid-template-columns: 1fr; }
