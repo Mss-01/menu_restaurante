@@ -22,7 +22,7 @@ const MENU = [
     id: "bebidas",
     title: "Bebidas",
     folder: "Bebidas",
-    fit: "contain",
+    fit: "cover",
     items: [
       { name: "Coca-Cola", image: "coca_cola", price: 80, description: "Refresco bien frío." },
       { name: "Agua Perrier", image: "agua_perrier", price: 150, description: "Agua mineral con gas." },

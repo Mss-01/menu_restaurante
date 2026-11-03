@@ -41,6 +41,10 @@ button { font: inherit; color: inherit; }
   color: var(--green);
 }
 
+/* Banner de apertura */
+.banner { max-width: 760px; margin: 0 auto; padding: 16px 12px 4px; }
+.banner img { width: 100%; height: auto; border-radius: var(--radius); box-shadow: 0 6px 18px rgba(0, 0, 0, .3); }
+
 /* Pestañas */
 .tabs {
   position: sticky;
@@ -148,7 +152,9 @@ button { font: inherit; color: inherit; }
 html:has(.modal[open]) { overflow: hidden; }
 .modal::backdrop { background: rgba(10, 25, 20, .75); }
 .modal__img { display: block; width: 100%; max-height: 60vh; flex: 0 1 auto; min-height: 0; }
-.modal__img--cover { object-fit: cover; aspect-ratio: 4 / 3; }
+/* En el detalle la foto se ve completa (sin recortar): proporción natural y,
+   si la pantalla es baja, se reduce con barras blancas a los lados. */
+.modal__img--cover { object-fit: contain; height: auto; background: var(--white); }
 .modal__img--contain { object-fit: contain; height: 320px; padding: 12px; background: #f4f1ea; }
 /* El scroll aparece solo dentro del texto y únicamente si no cabe */
 .modal__body { padding: 16px 20px 20px; overflow-y: auto; overscroll-behavior: contain; min-height: 0; flex: 0 1 auto; }
