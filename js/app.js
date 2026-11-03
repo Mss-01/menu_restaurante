@@ -12,6 +12,14 @@ function el(tag, className, text) {
   return node;
 }
 
+// Precio normal, o precio de apertura (con el normal tachado) si el ítem tiene "promo".
+function renderPrice(item) {
+  if (!item.promo) return el("span", "price", formatPrice(item.price));
+  const box = el("div", "pricebox");
+  box.append(el("span", "price", formatPrice(item.promo)), el("s", "price-old", formatPrice(item.price)));
+  return box;
+}
+
 function renderCard(section, item) {
   const card = el("button", "card");
   card.type = "button";
@@ -22,11 +30,12 @@ function renderCard(section, item) {
   img.alt = item.name;
   img.loading = "lazy";
   media.append(img);
+  if (item.promo) media.append(el("span", "badge", "Apertura"));
 
   const body = el("div", "card__body");
   body.append(el("h3", "card__name", item.name), el("p", "card__desc", item.description));
 
-  card.append(media, body, el("span", "price", formatPrice(item.price)));
+  card.append(media, body, renderPrice(item));
   card.addEventListener("click", () => openModal(section, item));
   return card;
 }
@@ -71,7 +80,7 @@ function openModal(section, item) {
   img.className = `modal__img modal__img--${section.fit}`;
   document.getElementById("modal-name").textContent = item.name;
   document.getElementById("modal-desc").textContent = item.description;
-  document.getElementById("modal-price").textContent = formatPrice(item.price);
+  document.getElementById("modal-price").replaceChildren(renderPrice(item));
   modal.showModal();
 }
 

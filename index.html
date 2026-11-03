@@ -18,9 +18,14 @@
     <p class="hero__tagline">Sabor casero, con mucho amor</p>
   </header>
 
-  <!-- Banner de apertura: para quitarlo, borra este bloque -->
-  <section class="banner" aria-label="Promoción de apertura">
-    <img src="images/apertura.webp" alt="Precios de apertura. ¡Buen sabor a un precio especial!" width="1024" height="235">
+  <!-- Banner de apertura animado: para quitarlo, borra este bloque (y js/banner.js) -->
+  <section class="promo" aria-label="Promoción de apertura">
+    <div class="promo__confetti" id="confetti" aria-hidden="true"></div>
+    <div class="promo__content">
+      <span class="promo__pill"><i class="promo__dot"></i>Gran apertura</span>
+      <h2 class="promo__title">Precios de <span class="promo__accent">apertura</span></h2>
+      <p class="promo__text" id="promo-text">¡Buen sabor a un precio especial!</p>
+    </div>
   </section>
 
   <nav class="tabs" id="tabs" aria-label="Secciones del menú"></nav>
@@ -37,11 +42,12 @@
     <div class="modal__body">
       <h3 id="modal-name"></h3>
       <p id="modal-desc"></p>
-      <span class="price" id="modal-price"></span>
+      <div id="modal-price"></div>
     </div>
   </dialog>
 
   <script src="js/menu-data.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/banner.js"></script>
 </body>
 </html>
