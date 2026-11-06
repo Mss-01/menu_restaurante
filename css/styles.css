@@ -304,6 +304,7 @@ html:has(.modal[open]) { overflow: hidden; }
 /* Pie */
 .footer { padding: 24px 16px 36px; text-align: center; background: var(--white); border-top: 4px solid var(--yellow); }
 .footer img { width: 170px; height: auto; margin: 0 auto; }
+.footer__copy { margin: 14px 0 0; font-size: 0.8rem; color: var(--green-light); }
 
 @media (max-width: 480px) {
   .grid { grid-template-columns: 1fr; }
