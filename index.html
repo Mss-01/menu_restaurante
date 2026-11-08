@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=3">
+  <link rel="stylesheet" href="css/styles.css?v=5">
 </head>
 <body>
   <header class="hero">
@@ -18,13 +18,14 @@
     <p class="hero__tagline">Sabor casero, con mucho amor</p>
   </header>
 
-  <!-- Banner de apertura animado: para quitarlo, borra este bloque (y js/banner.js) -->
-  <section class="promo" aria-label="Promoción de apertura">
-    <div class="promo__confetti" id="confetti" aria-hidden="true"></div>
+  <!-- Banner Rooftop animado (estrellas, luces y ciudad): para quitarlo, borra este bloque (y js/banner.js) -->
+  <section class="promo" aria-label="Nuestro Rooftop">
+    <div class="promo__lights" aria-hidden="true"></div>
+    <div class="promo__stars" id="stars" aria-hidden="true"></div>
     <div class="promo__content">
-      <span class="promo__pill"><i class="promo__dot"></i>Gran apertura</span>
-      <h2 class="promo__title">Precios de <span class="promo__accent">apertura</span></h2>
-      <p class="promo__text" id="promo-text">¡Buen sabor a un precio especial!</p>
+      <span class="promo__pill"><i class="promo__dot"></i>Rooftop</span>
+      <h2 class="promo__title">Sabor criollo en las <span class="promo__accent">alturas</span></h2>
+      <p class="promo__text" id="promo-text">Disfruta tu comida con el cielo como techo</p>
     </div>
   </section>
 
@@ -47,8 +48,8 @@
     </div>
   </dialog>
 
-  <script src="js/menu-data.js?v=2"></script>
-  <script src="js/app.js?v=2"></script>
-  <script src="js/banner.js?v=2"></script>
+  <script src="js/menu-data.js?v=6"></script>
+  <script src="js/app.js?v=6"></script>
+  <script src="js/banner.js?v=6"></script>
 </body>
 </html>
