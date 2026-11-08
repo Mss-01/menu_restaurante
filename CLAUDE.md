@@ -4,11 +4,11 @@ Menú digital estático (HTML + CSS + JS sin framework ni build) de un restauran
 
 ## Estructura
 
-- `index.html`: hero (logo + slogan), banner de apertura animado, pestañas, contenedor del menú, modal de detalle.
+- `index.html`: hero (logo + slogan), banner Rooftop animado, pestañas, contenedor del menú, modal de detalle.
 - `css/styles.css`: todos los estilos. Variables de marca en `:root` (verde `#23483D`, amarillo `#F2BE3E`, fuente títulos Bree Serif).
 - `js/menu-data.js`: array `MENU`. **Archivo GENERADO desde `menu.xlsx`: no editarlo a mano.**
 - `js/app.js`: renderiza pestañas, tarjetas y modal a partir de `MENU`; navegación por hash (`#platos`).
-- `js/banner.js`: confeti y frases rotativas del banner de apertura (lista `phrases` editable).
+- `js/banner.js`: estrellas y frases rotativas del banner Rooftop (lista `phrases` editable).
 - `menu.xlsx`: fuente de verdad del menú (lo edita el dueño).
 - `images/web/<Carpeta>/<imagen>.webp`: fotos que usa la web. `images/web/apertura.webp` es una versión recortada de `images/apertura.webp` (ya sin uso: el banner actual es CSS/JS).
 - `images/` (raíz): logos, guía de identidad (PDF). Las carpetas `images/Bebidas|Platos|Postres` con originales jpg/png están borradas del árbol de trabajo a propósito (solo se usa `images/web/`).
@@ -18,9 +18,9 @@ Menú digital estático (HTML + CSS + JS sin framework ni build) de un restauran
 El usuario edita `menu.xlsx` y pide "actualiza el menú". Yo regenero `js/menu-data.js`. No hay script guardado en el repo (el usuario pidió, por ahora, sin script); se hace con Python + openpyxl (instalado) leyendo el xlsx con `data_only=True` y escribiendo el JS en UTF-8 con `json.dumps(..., ensure_ascii=False)`.
 
 **Hojas del xlsx**
-- `Menu`: `seccion, orden, nombre, imagen, precio, descripcion, disponible, precio_apertura`.
+- `Menu`: `seccion, orden, nombre, imagen, precio, descripcion, disponible, precio_oferta`.
   - `disponible` = `NO` → el ítem se omite (cualquier otro valor, incluso vacío, se muestra).
-  - `precio` = precio normal. `precio_apertura` (opcional) = precio promocional → se emite como `promo`. Avisar si `promo >= price`.
+  - `precio` = precio normal. `precio_oferta` (opcional) = precio de oferta → se emite como `promo` (el nombre interno en el JS sigue siendo `promo`). Avisar si `promo >= price`.
   - `imagen` = nombre sin extensión; debe existir `images/web/<carpeta>/<imagen>.webp` (verificar y avisar si falta).
   - Descripciones pueden tener saltos de línea (`\n`); el modal los respeta (`white-space: pre-line`).
 - `Secciones`: `seccion, orden, carpeta_imagenes, ajuste_imagen` (`cover`|`contain`). Las secciones y los ítems se ordenan por `orden`.
@@ -40,10 +40,10 @@ const MENU = [
 
 ## Funcionalidades ya implementadas
 
-- Promoción de apertura: si un ítem tiene `promo`, la tarjeta muestra insignia "Apertura", precio promo resaltado y precio normal tachado (también en el modal). Funciones `renderPrice` en `app.js`; estilos `.badge`, `.pricebox`, `.price-old`.
+- Oferta: si un ítem tiene `promo` (columna `precio_oferta`), la tarjeta muestra la insignia "🔥 Oferta" (llamita animada, respeta `prefers-reduced-motion`), el precio de oferta resaltado y el normal tachado debajo; el modal muestra la misma insignia sobre los precios. Antes se llamaba "Apertura" (`precio_apertura`). Funciones `renderPrice` y `renderBadge` en `app.js`; estilos `.badge`, `.pricebox`, `.price-old`.
 - Modal: foto completa sin recortar (`object-fit: contain`), scroll de la página bloqueado con `html:has(.modal[open])`, scroll interno solo en el bloque de texto si no cabe.
 - Tarjetas: descripción recortada a 3 líneas; se ve completa en el modal.
-- Banner de apertura animado (`.promo`): respeta `prefers-reduced-motion`. Para quitarlo: borrar el bloque marcado con comentario en `index.html` y `js/banner.js`. El usuario NO quiere cierre automático por fecha.
+- Banner Rooftop animado (`.promo`; antes era de apertura, reemplazado en nov-2026): estrellas que titilan (JS), guirnalda de luces y silueta de ciudad (CSS), frases rotativas. Respeta `prefers-reduced-motion`. Para quitarlo: borrar el bloque marcado con comentario en `index.html` y `js/banner.js`. El usuario NO quiere cierre automático por fecha.
 
 ## Cosas que aprendí / precauciones
 

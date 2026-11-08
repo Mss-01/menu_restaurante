@@ -1,30 +1,31 @@
-// Animaciones del banner de apertura: confeti y frases que rotan.
+// Animaciones del banner Rooftop: estrellas que titilan y frases que rotan.
+// (Las luces y la silueta de la ciudad son solo CSS.)
 (function () {
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Confeti
-  const box = document.getElementById("confetti");
-  if (box && !reduced) {
-    const colors = ["#F2BE3E", "#FFFFFF", "#E8604C", "#7fc4a4", "#F7D77A"];
-    const count = window.innerWidth < 600 ? 16 : 34;
+  // Estrellas (con movimiento reducido quedan quietas: lo controla el CSS)
+  const box = document.getElementById("stars");
+  if (box) {
+    const colors = ["#FFFFFF", "#FFF3C4", "#F7D77A", "#FFFFFF"];
+    const count = window.innerWidth < 600 ? 14 : 30;
     for (let i = 0; i < count; i++) {
-      const p = document.createElement("span");
-      p.className = "confetti";
-      p.style.left = Math.random() * 100 + "%";
-      p.style.setProperty("--s", 5 + Math.random() * 6 + "px");
-      p.style.setProperty("--c", colors[i % colors.length]);
-      p.style.setProperty("--d", 6 + Math.random() * 6 + "s");
-      p.style.setProperty("--delay", -Math.random() * 10 + "s");
-      p.style.setProperty("--x", (Math.random() * 60 - 30).toFixed(0) + "px");
-      box.append(p);
+      const s = document.createElement("span");
+      s.className = "star";
+      s.style.left = Math.random() * 100 + "%";
+      s.style.top = 22 + Math.random() * 40 + "%";
+      s.style.setProperty("--s", 2 + Math.random() * 3 + "px");
+      s.style.setProperty("--c", colors[i % colors.length]);
+      s.style.setProperty("--d", 2.5 + Math.random() * 3.5 + "s");
+      s.style.setProperty("--delay", -Math.random() * 6 + "s");
+      box.append(s);
     }
   }
 
   // Frases que rotan (edita esta lista a gusto)
   const text = document.getElementById("promo-text");
   const phrases = [
-    "¡Buen sabor a un precio especial!",
-    "Busca la insignia «Apertura» en tus platos favoritos",
+    "Disfruta tu comida con el cielo como techo",
+    "Un rincón en las alturas para compartir",
     "Sabor casero, con mucho amor"
   ];
   if (text && !reduced) {

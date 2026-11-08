@@ -12,7 +12,14 @@ function el(tag, className, text) {
   return node;
 }
 
-// Precio normal, o precio de apertura (con el normal tachado) si el ítem tiene "promo".
+// Precio normal, o precio de oferta (con el normal tachado) si el ítem tiene "promo" (columna precio_oferta del Excel).
+// Insignia "🔥 Oferta" (llamita animada por CSS).
+function renderBadge(extraClass) {
+  const badge = el("span", extraClass ? `badge ${extraClass}` : "badge");
+  badge.append(el("span", "badge__flame", "🔥"), " Oferta");
+  return badge;
+}
+
 function renderPrice(item) {
   if (!item.promo) return el("span", "price", formatPrice(item.price));
   const box = el("div", "pricebox");
@@ -30,7 +37,7 @@ function renderCard(section, item) {
   img.alt = item.name;
   img.loading = "lazy";
   media.append(img);
-  if (item.promo) media.append(el("span", "badge", "Apertura"));
+  if (item.promo) media.append(renderBadge());
 
   const body = el("div", "card__body");
   body.append(el("h3", "card__name", item.name), el("p", "card__desc", item.description));
@@ -80,7 +87,7 @@ function openModal(section, item) {
   img.className = `modal__img modal__img--${section.fit}`;
   document.getElementById("modal-name").textContent = item.name;
   document.getElementById("modal-desc").textContent = item.description;
-  document.getElementById("modal-price").replaceChildren(renderPrice(item));
+  document.getElementById("modal-price").replaceChildren(...(item.promo ? [renderBadge("badge--inline")] : []), renderPrice(item));
   modal.showModal();
 }
 

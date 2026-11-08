@@ -41,13 +41,12 @@ button { font: inherit; color: inherit; }
   color: var(--green);
 }
 
-/* Banner de apertura */
-/* Banner de apertura animado */
+/* Banner Rooftop animado (luces, estrellas y silueta de la ciudad) */
 .promo {
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  padding: 26px 20px 28px;
+  padding: 48px 20px 54px;
   text-align: center;
   background:
     radial-gradient(60% 120% at 20% 0%, rgba(242, 190, 62, .22), transparent 60%),
@@ -57,6 +56,44 @@ button { font: inherit; color: inherit; }
   animation: promo-glow 9s ease-in-out infinite alternate;
 }
 .promo__content { position: relative; z-index: 1; }
+
+/* Silueta de la ciudad al fondo */
+.promo::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 44px;
+  z-index: 0;
+  pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='44' viewBox='0 0 240 44' fill='rgba(0,0,0,.24)'%3E%3Crect x='0' y='26' width='18' height='18'/%3E%3Crect x='18' y='16' width='14' height='28'/%3E%3Crect x='32' y='24' width='20' height='20'/%3E%3Crect x='52' y='8' width='12' height='36'/%3E%3Crect x='64' y='20' width='22' height='24'/%3E%3Crect x='86' y='28' width='16' height='16'/%3E%3Crect x='102' y='14' width='18' height='30'/%3E%3Crect x='120' y='22' width='14' height='22'/%3E%3Crect x='134' y='10' width='12' height='34'/%3E%3Crect x='146' y='24' width='24' height='20'/%3E%3Crect x='170' y='18' width='16' height='26'/%3E%3Crect x='186' y='28' width='18' height='16'/%3E%3Crect x='204' y='12' width='14' height='32'/%3E%3Crect x='218' y='22' width='22' height='22'/%3E%3C/svg%3E") repeat-x left bottom / 240px 44px;
+}
+
+/* Guirnalda de luces: el cable es el fondo; los focos van en dos capas que titilan alternadas */
+.promo__lights {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 32px;
+  z-index: 1;
+  pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='32' viewBox='0 0 80 32'%3E%3Cpath d='M0 3Q40 24 80 3' fill='none' stroke='rgba(255,255,255,.38)' stroke-width='1.5'/%3E%3C/svg%3E") repeat-x left top / 80px 32px;
+}
+.promo__lights::before,
+.promo__lights::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-repeat: repeat-x;
+  background-position: left top;
+  background-size: 80px 32px;
+  animation: promo-bulb 2.8s ease-in-out infinite;
+}
+.promo__lights::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='32' viewBox='0 0 80 32'%3E%3Ccircle cx='20' cy='16' r='9' fill='rgba(242,190,62,.28)'/%3E%3Crect x='18' y='9.5' width='4' height='3' fill='rgb(91,111,102)'/%3E%3Ccircle cx='20' cy='16' r='4.5' fill='rgb(255,226,140)'/%3E%3C/svg%3E");
+}
+.promo__lights::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='32' viewBox='0 0 80 32'%3E%3Ccircle cx='60' cy='16' r='9' fill='rgba(242,190,62,.28)'/%3E%3Crect x='58' y='9.5' width='4' height='3' fill='rgb(91,111,102)'/%3E%3Ccircle cx='60' cy='16' r='4.5' fill='rgb(255,226,140)'/%3E%3C/svg%3E");
+  animation-delay: -1.4s;
+}
 
 .promo__pill {
   display: inline-flex;
@@ -113,17 +150,17 @@ button { font: inherit; color: inherit; }
 }
 .promo__text.is-out { opacity: 0; transform: translateY(6px); }
 
-/* Confeti que cae suave (lo crea js/banner.js) */
-.promo__confetti { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
-.confetti {
+/* Estrellas que titilan (las crea js/banner.js) */
+.promo__stars { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.star {
   position: absolute;
-  top: -16px;
   width: var(--s);
-  height: calc(var(--s) * 1.6);
-  border-radius: 2px;
+  height: var(--s);
+  border-radius: 50%;
   background: var(--c);
-  opacity: .85;
-  animation: confetti-fall var(--d) var(--delay) linear infinite;
+  box-shadow: 0 0 6px 1px var(--c);
+  opacity: .7;
+  animation: star-twinkle var(--d) var(--delay) ease-in-out infinite;
 }
 
 @keyframes promo-glow { to { background-position: 100% 100%, 0% 0%, 0 0; } }
@@ -133,15 +170,18 @@ button { font: inherit; color: inherit; }
   0% { box-shadow: 0 0 0 0 rgba(242, 190, 62, .7); }
   80%, 100% { box-shadow: 0 0 0 9px rgba(242, 190, 62, 0); }
 }
-@keyframes confetti-fall {
-  0% { transform: translate3d(0, 0, 0) rotate(0); }
-  50% { transform: translate3d(var(--x), 110px, 0) rotate(200deg); }
-  100% { transform: translate3d(calc(var(--x) * -1), 240px, 0) rotate(420deg); }
+@keyframes star-twinkle {
+  0%, 100% { opacity: .15; transform: scale(.7); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+@keyframes promo-bulb {
+  0%, 100% { opacity: .55; }
+  50% { opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .promo, .promo *, .confetti { animation: none !important; transition: none !important; }
-  .promo__confetti { display: none; }
+  .badge__flame, .promo, .promo *, .star,
+  .promo__lights::before, .promo__lights::after { animation: none !important; transition: none !important; }
 }
 
 /* Pestañas */
@@ -235,19 +275,34 @@ button { font: inherit; color: inherit; }
   font-size: 1.1rem;
 }
 
-/* Promoción de apertura */
+/* Oferta: insignia con llamita (columna precio_oferta del Excel) */
 .badge {
   position: absolute;
   top: 10px;
   left: 10px;
-  padding: 3px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px 12px 3px 8px;
   border-radius: 999px;
-  background: var(--yellow);
-  color: var(--green);
+  background: #E8604C;
+  color: var(--white);
   font-family: var(--font-title);
   font-size: .85rem;
   letter-spacing: .03em;
   box-shadow: 0 2px 8px rgba(0, 0, 0, .3);
+}
+.badge--inline { position: static; margin-bottom: 8px; box-shadow: none; }
+.badge__flame {
+  display: inline-block;
+  font-size: 1.15em;
+  transform-origin: 50% 90%;
+  animation: flame-flicker 1.4s ease-in-out infinite;
+}
+@keyframes flame-flicker {
+  0%, 100% { transform: scale(1) rotate(-3deg); }
+  35% { transform: scale(1.14, 1.2) rotate(3deg); }
+  70% { transform: scale(.95, 1.05) rotate(-1deg); }
 }
 .pricebox {
   align-self: flex-start;
