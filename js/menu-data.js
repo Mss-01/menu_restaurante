@@ -7,7 +7,7 @@ const MENU = [
     folder: "Entradas",
     fit: "cover",
     items: [
-      { name: "Tequeños", image: "tequenos", price: 300, description: "Abre tu apetito con 4 irresistibles palitos de queso blanco envueltos en una masa suave y fritos hasta alcanzar un dorado perfecto y súper crujiente. Servidos calientitos y acompañados de nuestra salsa  rosada de la casa. ¡Ideales para compartir!" },
+      { name: "Tequeños", image: "tequenos", price: 300, description: "Abre tu apetito con 3 irresistibles palitos de queso blanco envueltos en una masa suave y fritos hasta alcanzar un dorado perfecto y súper crujiente. Servidos calientitos y acompañados de nuestra salsa  rosada de la casa. ¡Ideales para compartir!" },
       { name: "Copa de Aceitunas Marinadas", image: "copa_aceitunas", price: 200, description: "Una selección clásica y elegante de aceitunas, delicadamente aliñadas con hierbas aromáticas y un toque de aceite de oliva. Un aperitivo fresco, ligero y lleno de sabor para ir abriendo el paladar." },
       { name: "Copa de Maní Tostado", image: "copa_manies", price: 200, description: "El acompañante infalible. Delicioso maní tostado y ligeramente saladito servido en copa. El bocado crujiente perfecto para disfrutar y picar mientras esperas tu plato principal o acompañas tu bebida favorita." },
       { name: "Bocaditos de Chicharrón de Jabalí", image: "chicharron_jabali", price: 150, description: "Una tentadora porción individual de nuestro jugoso chicharrón de monte. Trozos carnosos de jabalí fritos hasta lograr una piel irresistiblemente crujiente, acompañados de yuquita y una rodaja de limón fresco. ¡Puro sabor rústico en cada bocado!" }
