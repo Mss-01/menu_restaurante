@@ -10,12 +10,13 @@ Menú digital estático (HTML + CSS + JS sin framework ni build) de un restauran
 - `js/app.js`: renderiza pestañas, tarjetas y modal a partir de `MENU`; navegación por hash (`#platos`).
 - `js/banner.js`: estrellas y frases rotativas del banner Rooftop (lista `phrases` editable).
 - `menu.xlsx`: fuente de verdad del menú (lo edita el dueño).
+- `actualizar_menu.py`: genera `js/menu-data.js` desde `menu.xlsx` y sube el `?v=N` (ver «Flujo principal»).
 - `images/web/<Carpeta>/<imagen>.webp`: fotos que usa la web. `images/web/apertura.webp` es una versión recortada de `images/apertura.webp` (ya sin uso: el banner actual es CSS/JS).
 - `images/` (raíz): logos, guía de identidad (PDF). Las carpetas `images/Bebidas|Platos|Postres` con originales jpg/png están borradas del árbol de trabajo a propósito (solo se usa `images/web/`).
 
 ## Flujo principal: actualizar el menú desde el Excel
 
-El usuario edita `menu.xlsx` y pide "actualiza el menú". Yo regenero `js/menu-data.js`. No hay script guardado en el repo (el usuario pidió, por ahora, sin script); se hace con Python + openpyxl (instalado) leyendo el xlsx con `data_only=True` y escribiendo el JS en UTF-8 con `json.dumps(..., ensure_ascii=False)`.
+El usuario edita `menu.xlsx` y pide "actualiza el menú". Yo regenero `js/menu-data.js` ejecutando **`python actualizar_menu.py`** (raíz del repo; Python + openpyxl). El usuario también puede correrlo él mismo. El script lee el xlsx con `data_only=True`, escribe el JS en UTF-8, avisa de problemas (imágenes que faltan, precios vacíos, secciones sin definir, `precio_oferta >= precio`), imprime el resumen de cambios y, **solo si hubo cambios, sube el `?v=N` de `js/menu-data.js` en `index.html`**. No hace commit/push. Si el menú sale vacío no escribe nada. Si cambian las reglas de la sección "Hojas del xlsx", actualizar el script. Detecta `~$menu.xlsx` (Excel abierto) y avisa.
 
 **Hojas del xlsx**
 - `Menu`: `seccion, orden, nombre, imagen, precio, descripcion, disponible, precio_oferta`.
@@ -36,7 +37,7 @@ const MENU = [
 ```
 `id` = título en minúsculas con espacios → guiones. Cabecera con el comentario "GENERADO desde menu.xlsx".
 
-**Después de regenerar:** comparar con la versión anterior (`diff`) y resumir al usuario qué cambió (ítems, precios, promos). Si algo parece accidental (texto cortado, `!` en vez de `¡`), avisar antes de dar por bueno.
+**Después de ejecutar el script:** resumir al usuario lo que imprime (ítems, precios, ofertas) y repetir sus AVISOS. Si algo parece accidental (texto cortado, `!` en vez de `¡`), avisar antes de dar por bueno.
 
 ## Funcionalidades ya implementadas
 
@@ -47,7 +48,7 @@ const MENU = [
 
 ## Cosas que aprendí / precauciones
 
-- **Caché de GitHub Pages** (`max-age=600`): el HTML se actualiza pero el CSS/JS viejo puede quedar en caché. Los enlaces en `index.html` llevan `?v=N`; **subir N al publicar cambios de CSS/JS/menú**.
+- **Caché de GitHub Pages** (`max-age=600`): el HTML se actualiza pero el CSS/JS viejo puede quedar en caché. Los enlaces en `index.html` llevan `?v=N`; **subir N al publicar cambios de CSS/JS/menú**. `actualizar_menu.py` sube solo el N de `menu-data.js`; si cambias `styles.css`/`app.js`/`banner.js`, súbelo a mano.
 - Los archivos usan **CRLF** en Windows; al parchear con Python, leer/escribir con `newline=""` y preservar el fin de línea (git avisa de LF→CRLF, es normal).
 - Imprimir el xlsx en la consola de Windows muestra caracteres rotos (`�`): es solo la consola; el dato está bien. Escribir a archivo UTF-8.
 - La ruta del proyecto tiene `ñ` y espacios; Chrome headless no abrió bien `file://` con esa ruta. Para capturas: copiar `index.html css js images` al directorio scratchpad y abrir desde ahí (`chrome.exe --headless --screenshot=...`, Chrome en `C:\Program Files\Google\Chrome\Application\`).
