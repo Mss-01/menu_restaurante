@@ -9,8 +9,7 @@ const MENU = [
     items: [
       { name: "Tequeños", image: "tequenos", price: 300, description: "Abre tu apetito con 3 irresistibles palitos de queso blanco envueltos en una masa suave y fritos hasta alcanzar un dorado perfecto y súper crujiente. Servidos calientitos y acompañados de nuestra salsa  rosada de la casa. ¡Ideales para compartir!" },
       { name: "Copa de Aceitunas Marinadas", image: "copa_aceitunas", price: 200, description: "Una selección clásica y elegante de aceitunas, delicadamente aliñadas con hierbas aromáticas y un toque de aceite de oliva. Un aperitivo fresco, ligero y lleno de sabor para ir abriendo el paladar." },
-      { name: "Copa de Maní Tostado", image: "copa_manies", price: 200, description: "El acompañante infalible. Delicioso maní tostado y ligeramente saladito servido en copa. El bocado crujiente perfecto para disfrutar y picar mientras esperas tu plato principal o acompañas tu bebida favorita." },
-      { name: "Bocaditos de Chicharrón de Jabalí", image: "chicharron_jabali", price: 150, description: "Una tentadora porción individual de nuestro jugoso chicharrón de monte. Trozos carnosos de jabalí fritos hasta lograr una piel irresistiblemente crujiente, acompañados de yuquita y una rodaja de limón fresco. ¡Puro sabor rústico en cada bocado!" }
+      { name: "Copa de Maní Tostado", image: "copa_manies", price: 200, description: "El acompañante infalible. Delicioso maní tostado y ligeramente saladito servido en copa. El bocado crujiente perfecto para disfrutar y picar mientras esperas tu plato principal o acompañas tu bebida favorita." }
     ]
   },
   {
@@ -29,8 +28,7 @@ const MENU = [
       { name: "Pollo crocante", image: "pollo_crocante", price: 300, description: "Piezas de pollo empanizadas y doradas, crujientes por fuera y jugosas por dentro, acompañado con papas o tostones con la salsa especial de la casa. Puedes pedir un chin mas: 3 X 250$, 4 X 350$, 6 X 550$" },
       { name: "Hamburguesa de res", image: "hamburguesa_res", price: 400, description: "Carne de res a la parrilla con vegetales frescos y queso, en pan artesanal. Acompañada de papas fritas." },
       { name: "Hamburguesa de pollo", image: "hamburguesa_pollo", price: 400, description: "Pechuga de pollo crujiente con lechuga, tomate y salsa de la casa. Acompañada de papas fritas." },
-      { name: "Hamburguesa Onion Bacon", image: "hamburguesa_onion_bacon", price: 500, description: "Una explosión de texturas en cada bocado. Jugosa carne de res a la parrilla coronada con abundante tocino ahumado súper crujiente y queso cheddar fundido. Todo servido en un suave pan artesanal tostado con el toque especial de nuestra salsa de la casa. Acompañada de papas fritas." },
-      { name: "Hamburguesa Doña Niña", image: "hamburguesa_dona_nina", price: 600, description: "Para los que no quieren elegir y lo quieren todo. Nuestro gran especial combina lo mejor de ambos mundos: sabroso pollo crocante y jugosa res a la parrilla, abrazadas por queso derretido, cebolla caramelizada y pan artesanal. Una experiencia única con nuestro toque especial. Acompañada de papas fritas." }
+      { name: "Hamburguesa Onion Bacon", image: "hamburguesa_onion_bacon", price: 500, description: "Una explosión de texturas en cada bocado. Jugosa carne de res a la parrilla coronada con abundante tocino ahumado súper crujiente y queso cheddar fundido. Todo servido en un suave pan artesanal tostado con el toque especial de nuestra salsa de la casa. Acompañada de papas fritas." }
     ]
   },
   {
