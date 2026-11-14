@@ -47,7 +47,11 @@ const MENU = [
       { name: "Cerveza Presidente (Normal / Light)", image: "presidente_light_normal", price: 200, description: "La verdadera cerveza dominicana, servida en su punto exacto de frío. Elige entre su inconfundible sabor clásico o su versión más ligera para disfrutar el momento." },
       { name: "Cerveza Modelo Rubia", image: "cerveza_modelo", price: 250, description: "Auténtica cerveza mexicana tipo Pilsner. De cuerpo balanceado, sabor completo y un final limpio y refrescante. Una elección premium, ideal para disfrutar bien fría." },
       { name: "Cerveza Corona", image: "cerveza_corona", price: 250, description: "Refrescante, ligera y de sabor inconfundible. La opción ideal para relajarte, siempre acompañada de su clásico toque de limón." },
-      { name: "Stella Artois", image: "stella_artois", price: 250, description: "Clásica cerveza belga de prestigio mundial. Destaca por su sabor perfectamente equilibrado, un final crujiente y suaves notas florales. Elegancia y frescura en cada sorbo." }
+      { name: "Stella Artois", image: "stella_artois", price: 250, description: "Clásica cerveza belga de prestigio mundial. Destaca por su sabor perfectamente equilibrado, un final crujiente y suaves notas florales. Elegancia y frescura en cada sorbo." },
+      { name: "Mojito de Limon", image: "mojito_limon", price: 350, description: "El clásico refrescante. Preparado con ron blanco, jugo de limón recién exprimido, hojas de menta fresca, un toque de azúcar y soda burbujeante sobre abundante hielo." },
+      { name: "Mojito de Chinola", image: "mojito_chinola", price: 400, description: "Equilibrio tropical entre dulce y ácido. Elaborado con pulpa natural de chinola, ron blanco, menta fresca, limón y un toque de agua con gas." },
+      { name: "Mojito de Fresa", image: "mojito_fresa", price: 400, description: "Fresco, vibrante y ligeramente dulce. Mezcla de fresas naturales maceradas, ron blanco, hojas de menta, zumo de limón y soda bien fría." },
+      { name: "Mojito de Piña", image: "mojito_pina", price: 400, description: "Sabor caribeño en cada sorbo. Combinación refrescante de piña natural, ron blanco, menta fresca, limón y un toque burbujeante de soda." }
     ]
   },
   {
