@@ -8,7 +8,7 @@ Menú digital estático (HTML + CSS + JS sin framework ni build) de un restauran
 - `css/styles.css`: todos los estilos. Variables de marca en `:root` (verde `#23483D`, amarillo `#F2BE3E`, fuente títulos Bree Serif).
 - `js/menu-data.js`: array `MENU`. **Archivo GENERADO desde `menu.xlsx`: no editarlo a mano.**
 - `js/app.js`: renderiza pestañas, tarjetas y modal a partir de `MENU`; navegación por hash (`#platos`).
-- `js/banner.js`: estrellas y frases rotativas del banner Rooftop (lista `phrases` editable).
+- `js/banner.js`: estrellas que titilan del banner Rooftop.
 - `menu.xlsx`: fuente de verdad del menú (lo edita el dueño).
 - `actualizar_menu.py`: genera `js/menu-data.js` desde `menu.xlsx` y sube el `?v=N` (ver «Flujo principal»).
 - `images/web/<Carpeta>/<imagen>.webp`: fotos que usa la web. `images/web/apertura.webp` es una versión recortada de `images/apertura.webp` (ya sin uso: el banner actual es CSS/JS).
@@ -44,7 +44,7 @@ const MENU = [
 - Oferta: si un ítem tiene `promo` (columna `precio_oferta`), la tarjeta muestra la insignia "🔥 Oferta" (llamita animada, respeta `prefers-reduced-motion`), el precio de oferta resaltado y el normal tachado debajo; el modal muestra la misma insignia sobre los precios. Antes se llamaba "Apertura" (`precio_apertura`). Funciones `renderPrice` y `renderBadge` en `app.js`; estilos `.badge`, `.pricebox`, `.price-old`.
 - Modal: foto completa sin recortar (`object-fit: contain`), scroll de la página bloqueado con `html:has(.modal[open])`, scroll interno solo en el bloque de texto si no cabe.
 - Tarjetas: descripción recortada a 3 líneas; se ve completa en el modal.
-- Banner Rooftop animado (`.promo`; antes era de apertura, reemplazado en nov-2026): estrellas que titilan (JS), guirnalda de luces y silueta de ciudad (CSS), frases rotativas. Respeta `prefers-reduced-motion`. Para quitarlo: borrar el bloque marcado con comentario en `index.html` y `js/banner.js`. El usuario NO quiere cierre automático por fecha.
+- Banner Rooftop animado (`.promo`; antes era de apertura, reemplazado en nov-2026): estrellas que titilan (JS), guirnalda de luces y silueta de ciudad (CSS) y un anuncio fijo (`.promo__deal`: "2x1 de mojitos todos los viernes"; se edita en `index.html`). Ya no hay frases rotativas (quitadas a pedido del usuario). Respeta `prefers-reduced-motion`. Para quitarlo: borrar el bloque marcado con comentario en `index.html` y `js/banner.js`. El usuario NO quiere cierre automático por fecha.
 
 ## Cosas que aprendí / precauciones
 

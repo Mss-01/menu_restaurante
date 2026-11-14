@@ -139,16 +139,26 @@ button { font: inherit; color: inherit; }
   animation: promo-shine 3.6s 1s ease-in-out infinite;
 }
 
-.promo__text {
-  min-height: 1.6em;
-  margin: 0;
+/* Anuncio fijo del banner (promo semanal) */
+.promo__deal {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  margin: 16px 0 0;
+  padding: 8px 18px;
+  border: 1.5px solid rgba(242, 190, 62, .7);
+  border-radius: 999px;
+  background: rgba(242, 190, 62, .14);
+  color: var(--white);
   font-family: var(--font-title);
-  font-size: clamp(1rem, 3.2vw, 1.3rem);
-  color: rgba(255, 255, 255, .92);
-  transition: opacity .45s, transform .45s;
-  animation: promo-rise .8s .35s both cubic-bezier(.2, .8, .2, 1);
+  font-size: clamp(.9rem, 3vw, 1.1rem);
+  line-height: 1.3;
+  text-align: left;
+  animation: promo-rise .8s .5s both cubic-bezier(.2, .8, .2, 1);
 }
-.promo__text.is-out { opacity: 0; transform: translateY(6px); }
+.promo__deal strong { font-weight: 400; color: var(--yellow); }
+.promo__deal-icon { font-size: 1.2em; }
 
 /* Estrellas que titilan (las crea js/banner.js) */
 .promo__stars { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
