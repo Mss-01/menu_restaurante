@@ -1,8 +1,6 @@
-// Animaciones del banner Rooftop: estrellas que titilan y frases que rotan.
+// Animaciones del banner Rooftop: estrellas que titilan.
 // (Las luces y la silueta de la ciudad son solo CSS.)
 (function () {
-  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
   // Estrellas (con movimiento reducido quedan quietas: lo controla el CSS)
   const box = document.getElementById("stars");
   if (box) {
@@ -19,24 +17,5 @@
       s.style.setProperty("--delay", -Math.random() * 6 + "s");
       box.append(s);
     }
-  }
-
-  // Frases que rotan (edita esta lista a gusto)
-  const text = document.getElementById("promo-text");
-  const phrases = [
-    "Disfruta tu comida con el cielo como techo",
-    "Un rincón en las alturas para compartir",
-    "Sabor casero, con mucho amor"
-  ];
-  if (text && !reduced) {
-    let i = 0;
-    setInterval(() => {
-      text.classList.add("is-out");
-      setTimeout(() => {
-        i = (i + 1) % phrases.length;
-        text.textContent = phrases[i];
-        text.classList.remove("is-out");
-      }, 450);
-    }, 4500);
   }
 })();
